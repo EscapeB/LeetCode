@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+//    Given an array of integers, every element appears twice except for one. Find that single one.
+//    对数组中所有的数字进行异或操作，出现偶数次数字的位数经过偶数次异或位上为0，奇数次的还是原来的数字，这样就选出了出现奇数次的数字
+    var singleNumber = function(nums) {
+        var result;
+        result=nums[0];
+        for (var i=1;i<nums.length;i++){
+            result^=nums[i];
+        }
+        return result;
+    };
+    alert(singleNumber([1,2,3,10,4,3,4,2,1,5,2,5,10]));
+</script>
+
+</body>
+</html>
