@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    var hammingWeight = function (n) {
+        var weight = 0;
+        var mask = 1;
+        for (var i = 0; i < 32; i++) {
+            if ((mask & n) !==0) {
+                weight++;
+            }
+            mask=mask<<1;
+        }
+        return weight;
+
+    }
+    alert(hammingWeight(15));
+</script>
+</body>
+</html>
