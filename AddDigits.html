@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    var addDigits = function (num) {
+        var str = num.toString();
+        var sum = 0;
+        if (str.length == 1) {
+            sum = num;
+        }
+        while (str.length != 1) {
+            if (sum != 0) {
+                sum = 0;
+            }
+            for (var i = 0; i < str.length; i++) {
+                sum += parseInt(str.charAt(i));
+            }
+            str = sum.toString();
+        }
+        return sum;
+    };
+    alert(addDigits(38));
+</script>
+
+</body>
+</html>
