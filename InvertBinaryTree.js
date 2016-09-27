@@ -16,8 +16,10 @@ var invertTree = function (root) {
     if (root === null) {
         return null;
     }
+    //递归交换左右子树
     arguments.callee(root.left);
     arguments.callee(root.right);
+    //交换当前节点左右子树的位置
     var temp = root.left;
     root.left = root.right;
     root.right = temp;
