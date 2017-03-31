@@ -13,9 +13,20 @@ function ListNode(val) {
  */
 var reverseList = function(head) {
     var first,p,q,r;
+    if (head==null){
+        return null;
+    }
     first=head;
     p=head;
+    if (p.next==null){
+        return p;
+    }
     q=p.next;
+    if (q.next==null){
+        q.next=p;
+        p.next=null;
+        return q;
+    }
     r=q.next;
     while (r!=first&&r!=null){
         q.next=p;
@@ -42,4 +53,4 @@ node1.next=node2;
 node2.next=node3;
 node3.next=node4;
 //node4.next=node1;
-console.log(reverseList(node1).val);
+console.log(reverseList(null));
