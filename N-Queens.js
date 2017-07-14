@@ -14,7 +14,7 @@ var sloveNQueens = function (n) {
     var judge = function (p, q) {
         for (var i = 0; i < n; i++) {
             //判断q列是否与某一行的列冲突||判断斜向是否冲突，如果两个位置在斜方向在一条直线，那么行号之差等于列号之差。
-            if (queenPos[i] == q || Math.abs(i - p) == Math.abs(queenPos[i] - q)) {
+            if (queenPos[i] === q || Math.abs(i - p) === Math.abs(queenPos[i] - q)) {
                 return false;
             }
         }
@@ -27,11 +27,11 @@ var sloveNQueens = function (n) {
         var solution = [];
         for (i = 0; i < n; i++) {
             for (j = 0; j < n; j++) {
-                if (queenPos[i] == j) {
+                if (queenPos[i] === j) {
                     row += "Q";
                 }
                 else {
-                    row += ".";
+                    row += "*";
                 }
             }
             solution.push(row);
@@ -58,20 +58,21 @@ var sloveNQueens = function (n) {
             }
         }
         //如果列探测完，该queenPos该行位置上的数据仍未初始值
-        if (queenPos[i]==-9999){
+        if (queenPos[i]===-9999){
             //若i为0，说明回溯到头，没有其他解了。就结束
-            if (i==0){
+            if (i===0){
                 break;
             }
             //若为其他值，返回上一行继续探测，从上一行记录列位置的下一列进行探测。
             else {
                 i--;
                 j=queenPos[i]+1;
+                queenPos[i]=-9999;
                 continue;
             }
         }
         //如果i为n-1，说明已经探测完最后一行且找到了解，记录解并从该记录解的下一列继续探测。将queenPos该位置设为初始值
-        if(i==n-1){
+        if(i===n-1){
             addSolution();
             j=queenPos[i]+1;
             queenPos[i]=-9999;
@@ -79,8 +80,16 @@ var sloveNQueens = function (n) {
         }
         i++;
     }
-    return allSolution;
-
-
+    function outputQueens(result) {
+        console.log('total solves '+result.length);
+        result.map(function (currentValue, index, array) {
+           for (var i=0;i<currentValue.length;i++)
+           {
+               console.log(currentValue[i]+'\n');
+           }
+           console.log('-----------------------');
+        });
+    }
+    outputQueens(allSolution);
 };
-console.log(sloveNQueens(4));
+sloveNQueens(4);
